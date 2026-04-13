@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <title>Guepe 3D Interactive</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script src="https://raw.githack.com/fcor/aframe-gesture-detector/master/dist/aframe-gesture-detector.js"></script>
+    <script src="https://raw.githack.com/fcor/aframe-gesture-handler/master/dist/aframe-gesture-handler.js"></script>
+    
+    <style>
+      #info-panel {
+        position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+        width: 80%; background: rgba(0, 0, 0, 0.8); color: white;
+        padding: 15px; border-radius: 15px; font-family: sans-serif;
+        text-align: center; z-index: 999; border: 2px solid #ffcc00;
+      }
+      h2 { margin: 0; color: #ffcc00; font-size: 18px; }
+      p { margin: 5px 0 0; font-size: 14px; }
+    </style>
   </head>
+
   <body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+    <div id="info-panel">
+      <h2>Vespa Crabro (Frelon/Guêpe)</h2>
+      <p>Utilise tes doigts pour faire pivoter la guêpe et l'observer sous tous les angles. Ce modèle montre l'anatomie précise pour le Moulin de Brousses.</p>
+    </div>
+
+    <a-scene 
+      embedded 
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+      gesture-detector>
       
       <a-assets>
         <a-asset-item id="wasp" src="Mesh_Wasp.glb"></a-asset-item>
       </a-assets>
 
-      <a-entity gltf-model="#wasp" 
-                position="0 0 -2" 
-                scale="0.05 0.05 0.05"
-                rotation="0 45 0">
+      <a-entity
+        gltf-model="#wasp"
+        position="0 0 -2"
+        scale="0.08 0.08 0.08"
+        class="clickable"
+        gesture-handler="rotationFactor: 1; minScale: 0.01; maxScale: 1">
       </a-entity>
 
-      <a-entity camera></a-entity>
+      <a-entity camera>
+        <a-entity cursor="fuse: false; rayOrigin: mouse;"></a-entity>
+      </a-entity>
     </a-scene>
   </body>
 </html>
