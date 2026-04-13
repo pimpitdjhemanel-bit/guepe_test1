@@ -11,25 +11,50 @@
     
     <style>
       #info-panel {
-        position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-        width: 80%; background: rgba(0, 0, 0, 0.8); color: white;
-        padding: 15px; border-radius: 15px; font-family: sans-serif;
-        text-align: center; z-index: 999; border: 2px solid #ffcc00;
+        position: fixed; 
+        bottom: 30px; 
+        left: 50%; 
+        transform: translateX(-50%);
+        width: 85%; 
+        /* Effet Glassmorphism */
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: white;
+        padding: 20px; 
+        border-radius: 20px; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center; 
+        z-index: 999; 
+        border: 1px solid rgba(255, 204, 0, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
       }
-      h2 { margin: 0; color: #ffcc00; font-size: 18px; }
-      p { margin: 5px 0 0; font-size: 14px; }
+      h2 { 
+        margin: 0; 
+        color: #ffcc00; 
+        font-size: 20px; 
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      p { 
+        margin: 10px 0 0; 
+        font-size: 14px; 
+        line-height: 1.4;
+        opacity: 0.9;
+      }
     </style>
   </head>
 
   <body style="margin: 0; overflow: hidden;">
     <div id="info-panel">
-      <h2>Vespa Crabro (Frelon/Guêpe)</h2>
-      <p>Utilise tes doigts pour faire pivoter la guêpe et l'observer sous tous les angles. Ce modèle montre l'anatomie précise pour le Moulin de Brousses.</p>
+      <h2>Vespa Crabro</h2>
+      <p><b>Observation anatomique</b><br>Pince pour zoomer, glisse pour pivoter.<br>Projet pédagogique - Moulin de Brousses</p>
     </div>
 
     <a-scene 
       embedded 
-      arjs="sourceType: webcam; debugUIEnabled: false;"
+      arjs="sourceType: webcam; debugUIEnabled: false; uiEnabled: false;"
+      vr-mode-ui="enabled: false"
       gesture-detector>
       
       <a-assets>
@@ -39,9 +64,10 @@
       <a-entity
         gltf-model="#wasp"
         position="0 0 -2"
-        scale="0.08 0.08 0.08"
+        scale="0.04 0.04 0.04"
         class="clickable"
-        gesture-handler="rotationFactor: 1; minScale: 0.01; maxScale: 1">
+        gesture-handler="rotationFactor: 1"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear">
       </a-entity>
 
       <a-entity camera>
