@@ -15,40 +15,27 @@
         bottom: 30px; 
         left: 50%; 
         transform: translateX(-50%);
-        width: 85%; 
-        /* Effet Glassmorphism */
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        width: 80%; 
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         color: white;
-        padding: 20px; 
-        border-radius: 20px; 
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 15px; 
+        border-radius: 15px; 
+        font-family: sans-serif;
         text-align: center; 
         z-index: 999; 
-        border: 1px solid rgba(255, 204, 0, 0.3);
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        border: 1px solid #ffcc00;
       }
-      h2 { 
-        margin: 0; 
-        color: #ffcc00; 
-        font-size: 20px; 
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-      p { 
-        margin: 10px 0 0; 
-        font-size: 14px; 
-        line-height: 1.4;
-        opacity: 0.9;
-      }
+      h2 { margin: 0; color: #ffcc00; font-size: 18px; text-transform: uppercase; }
+      p { margin: 5px 0 0; font-size: 13px; opacity: 0.8; }
     </style>
   </head>
 
   <body style="margin: 0; overflow: hidden;">
     <div id="info-panel">
-      <h2>Vespa Crabro</h2>
-      <p><b>Observation anatomique</b><br>Pince pour zoomer, glisse pour pivoter.<br>Projet pédagogique - Moulin de Brousses</p>
+      <h2>Modèle Interactif : Guêpe</h2>
+      <p>Fais glisser pour pivoter • Pince pour zoomer</p>
     </div>
 
     <a-scene 
@@ -66,8 +53,7 @@
         position="0 0 -2"
         scale="0.04 0.04 0.04"
         class="clickable"
-        gesture-handler="rotationFactor: 1"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear">
+        gesture-handler="rotationFactor: 1; minScale: 0.01; maxScale: 0.1">
       </a-entity>
 
       <a-entity camera>
